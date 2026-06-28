@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FitFuel Station — Healthy high-protein bowls in Chhatrapati Sambhajinagar. Power in every bite. Order via WhatsApp.">
+    <meta name="theme-color" content="#0d0d0d">
+    <title>FitFuel Station — Healthy Food. High Protein. Great Taste.</title>
+    <link rel="icon" type="image/png" href="images/fitfuel-logo.png">
+    <link rel="apple-touch-icon" href="images/fitfuel-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" aria-label="FitFuel Station — Home">
+                <img
+                    src="images/fitfuel-logo.png"
+                    alt="FitFuel Station — Eat Clean, Train Hard, Live Strong"
+                    class="logo-img"
+                    width="52"
+                    height="52"
+                >
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#menu">Menu</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#how-it-works">Order</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+        <div class="hero-badge">Power in Every Bite</div>
+        <div class="hero-content">
+            <p class="hero-tagline">Eat Clean • Train Hard • Live Strong</p>
+            <h1>Fuel Today.<br><span class="highlight">Perform Tomorrow.</span></h1>
+            <p class="hero-sub">Healthy food. High protein. Great taste. Fresh bowls made daily in Chhatrapati Sambhajinagar.</p>
+            <div class="hero-actions">
+                <button class="cta-btn" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Menu</button>
+                <button class="cta-btn-outline" type="button" onclick="document.getElementById('cartBtn').click()">Open Cart</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <img
+                class="hero-photo"
+                src="images/hero-protein-bowl.jpg"
+                alt="FitFuel Station — fresh high-protein meal bowls"
+                loading="eager"
+            >
+            <div class="hero-stats">
+                <span>High Protein</span>
+                <span>Fresh Daily</span>
+                <span>Affordable</span>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="delivery-banner">
+        <span class="delivery-icon">🛵</span>
+        <p><strong>Home Delivery Available!</strong> Enjoy your favorite healthy meals at your doorstep.</p>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <div class="menu-header">
+            <span class="menu-label">Our Menu</span>
+            <h2>Bowls</h2>
+            <p class="section-sub">Choose your bowl — most items available in <strong>100g</strong> & <strong>200g</strong> sizes.</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Bowls</button>
+            <button class="filter-btn" data-filter="protein">High Protein</button>
+            <button class="filter-btn" data-filter="veg">Vegetarian</button>
+            <button class="filter-btn" data-filter="light">Light & Fresh</button>
+        </div>
+
+        <div class="meals-grid" id="mealsGrid"></div>
+    </section>
+
+    <section id="why-us" class="why-choose-us">
+        <h2>Why Choose FitFuel Station</h2>
+        <p class="section-sub">Your goals. Our fuel.</p>
+        <div class="features-grid features-grid-four">
+            <div class="feature-card">
+                <div class="feature-icon">💪</div>
+                <h3>High Protein</h3>
+                <p>Fuel your goals</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌿</div>
+                <h3>Fresh Ingredients</h3>
+                <p>Made with quality ingredients</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🍳</div>
+                <h3>Made Fresh Daily</h3>
+                <p>Prepared fresh every day</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">₹</div>
+                <h3>Affordable</h3>
+                <p>Healthy food for everyone</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="services-grid">
+            <div class="service-item">
+                <span>🍲</span>
+                <h4>Heavy Meals</h4>
+                <p>Filling, satisfying & performance ready</p>
+            </div>
+            <div class="service-item">
+                <span>📅</span>
+                <h4>Daily Meal Plans</h4>
+                <p>Breakfast, lunch & dinner — balanced & nutritious</p>
+            </div>
+            <div class="service-item">
+                <span>🏋️</span>
+                <h4>Fitness Focused</h4>
+                <p>Designed for gym-goers, athletes & boxers</p>
+            </div>
+            <div class="service-item">
+                <span>👨‍🍳</span>
+                <h4>Tasty & Fresh</h4>
+                <p>Real food. Real flavor. Made fresh every day.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2>How to Order</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Pick Your Bowls</h3>
+                <p>Browse the menu, choose your size, and add items to your cart.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Fill Your Details</h3>
+                <p>Enter your name, address, phone & preferred delivery time.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Send on WhatsApp</h3>
+                <p>Tap order — we receive your full order instantly on WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Best protein bowls in Sambhajinagar! Chicken rice bowl is my post-workout go-to. Great taste and affordable."</p>
+                <div class="testimonial-author">— Rahul K.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Paneer bowl is amazing. Fresh ingredients, generous portions. Ordering on WhatsApp is super easy."</p>
+                <div class="testimonial-author">— Sneha K.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Sprouts chaat bowl is perfect for a light lunch. FitFuel Station keeps me on track with my fitness goals."</p>
+                <div class="testimonial-author">— Arjun M.</div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button id="prevBtn" class="carousel-btn" aria-label="Previous review">←</button>
+            <button id="nextBtn" class="carousel-btn" aria-label="Next review">→</button>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-content">
+            <h2>Eat Better. Live Stronger.</h2>
+            <p class="contact-slogan">Your goals. Our fuel.</p>
+            <a class="order-now-btn" href="#menu">View Menu & Order</a>
+            <div class="contact-links">
+                <a href="https://wa.me/919822660872" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="https://instagram.com/fitfuel_station.in" target="_blank" rel="noopener">@fitfuel_station.in</a>
+                <span>📍 Chhatrapati Sambhajinagar</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="founders" class="founders-section">
+        <div class="founders-inner">
+            <div class="founders-photo-side">
+                <img
+                    src="images/founders/founders-together.jpg"
+                    alt="Rajan Khandagale and Rajnandini Khandagale — FitFuel Station founders"
+                    class="founders-together-photo"
+                    loading="lazy"
+                >
+            </div>
+            <div class="founders-info">
+                <h2>Meet Our Founders</h2>
+                <p class="founders-intro">The team behind FitFuel Station — fueling Sambhajinagar with healthy, high-protein meals every day.</p>
+                <div class="founders-names">
+                    <div class="founder-item">
+                        <p class="founder-role">Founder</p>
+                        <h3 class="founder-name">Rajan Khandagale</h3>
+                    </div>
+                    <div class="founder-item">
+                        <p class="founder-role">Co-Founder</p>
+                        <h3 class="founder-name">Rajnandini Khandagale</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <img
+            src="images/fitfuel-logo.png"
+            alt="FitFuel Station"
+            class="footer-logo"
+            width="72"
+            height="72"
+            loading="lazy"
+        >
+        <p>© <span id="year"></span> FitFuel Station. Thank you for choosing us!</p>
+        <p class="footer-tagline">Healthy Food • High Protein • Great Taste</p>
+        <p class="footer-credit">
+            <button type="button" class="dev-credit-btn" id="devCreditBtn" aria-haspopup="dialog" aria-controls="devModal">
+                Developed by Karan Bankar
+            </button>
+        </p>
+    </footer>
+
+    <div class="dev-modal-overlay" id="devModalOverlay" hidden></div>
+    <div class="dev-modal" id="devModal" role="dialog" aria-modal="true" aria-labelledby="devModalTitle" hidden>
+        <div class="dev-modal-header">
+            <h3 id="devModalTitle">Karan Bankar</h3>
+            <button type="button" class="dev-modal-close" id="devModalClose" aria-label="Close">&times;</button>
+        </div>
+        <p class="dev-modal-subtitle">Developer & Digital Solutions</p>
+        <div class="dev-modal-contact">
+            <a href="mailto:karanbankar54@gmail.com" class="dev-contact-link">
+                <span aria-hidden="true">✉</span> karanbankar54@gmail.com
+            </a>
+            <a href="tel:+919307879687" class="dev-contact-link">
+                <span aria-hidden="true">📞</span> 9307879687
+            </a>
+        </div>
+        <div class="dev-modal-services">
+            <h4>Our Services</h4>
+            <ul>
+                <li>App Development</li>
+                <li>Web Development</li>
+                <li>Software Deployment</li>
+                <li>Digital Consultancy</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-btn" id="closeCart" aria-label="Close cart">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">Your cart is empty</div>
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span id="subtotal">₹0</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span id="total">₹0</span>
+            </div>
+        </div>
+
+        <form class="checkout-form" id="checkoutForm">
+            <h4 id="cartCheckout">Delivery Details</h4>
+
+            <input type="text" id="fullName" placeholder="Full Name" required>
+
+            <div class="location-field">
+                <label class="field-label" for="landmark">Delivery Location</label>
+                <div class="location-actions">
+                    <button type="button" class="location-btn" id="useLiveLocation">
+                        <span aria-hidden="true">📍</span> Get Exact Live Location
+                    </button>
+                    <span class="location-or">or type address manually below</span>
+                </div>
+
+                <div class="location-preview" id="locationPreview" hidden>
+                    <div class="location-preview-header">
+                        <span class="location-pin">📌 Exact GPS pin captured</span>
+                        <a class="location-map-link" id="verifyMapLink" href="#" target="_blank" rel="noopener noreferrer">Verify on Google Maps ↗</a>
+                    </div>
+                    <p class="location-coords" id="coordsDisplay"></p>
+                    <p class="location-accuracy" id="accuracyDisplay"></p>
+                    <iframe class="location-map" id="locationMapFrame" title="Your live location on map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <input type="text" id="landmark" placeholder="Flat no., building name, landmark (optional with live GPS)">
+                <input type="text" id="addressManual" placeholder="Full delivery address (if not using live GPS)">
+                <p class="location-status" id="locationStatus" hidden></p>
+            </div>
+
+            <input type="tel" id="phone" placeholder="Contact Number (10 digits)" required>
+
+            <div class="form-row">
+                <input type="date" id="deliveryDate" required>
+                <select id="timeSlot" required>
+                    <option value="">Select Time Slot</option>
+                    <option value="09:00 AM - 11:00 AM">09:00 AM - 11:00 AM</option>
+                    <option value="11:00 AM - 01:00 PM">11:00 AM - 01:00 PM</option>
+                    <option value="05:00 PM - 07:00 PM">05:00 PM - 07:00 PM</option>
+                    <option value="07:00 PM - 09:00 PM">07:00 PM - 09:00 PM</option>
+                </select>
+            </div>
+
+            <label class="field-label" for="sauceChoice">Choose Your Sauce</label>
+            <select id="sauceChoice" required>
+                <option value="">Select a sauce</option>
+                <option value="Peri Peri Garlic Yoghurt Sauce">Peri Peri Garlic Yoghurt Sauce</option>
+                <option value="Chilli Lime Yoghurt Sauce">Chilli Lime Yoghurt Sauce</option>
+                <option value="Roasted Red Pepper Protein Sauce">Roasted Red Pepper Protein Sauce</option>
+                <option value="Roasted Garlic Parmesan Protein Sauce">Roasted Garlic Parmesan Protein Sauce</option>
+                <option value="Red Chilli Yoghurt Sauce">Red Chilli Yoghurt Sauce</option>
+                <option value="Healthy Protein Mayonnaise">Healthy Protein Mayonnaise</option>
+            </select>
+
+            <textarea id="specialNotes" placeholder="Dietary notes or special instructions (optional)" rows="3"></textarea>
+
+            <button type="submit" class="whatsapp-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-1.536.926-2.714 2.306-3.402 3.624.822-1.532 2.163-2.822 3.778-3.678 1.614-.857 3.42-1.325 5.313-1.325.102 0 .203.001.305.003z"/>
+                </svg>
+                Place Order via WhatsApp
+            </button>
+        </form>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

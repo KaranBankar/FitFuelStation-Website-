@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshPrepCo - Gourmet Healthy Meal Delivery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+/* CSS Variables & Root */
+:root {
+    --primary-green: #1E3F20;
+    --accent-gold: #D4A574;
+    --accent-orange: #F4A460;
+    --white: #FFFFFF;
+    --light-gray: #F8F8F6;
+    --dark-gray: #3A3A38;
+    --border-light: #E8E8E6;
+    --success: #4CAF50;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark-gray);
+    background-color: var(--white);
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+.cart-btn {
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cart-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--accent-orange);
+    color: var(--white);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-green) 0%, #2d5f3f 100%);
+    color: var(--white);
+    padding: 6rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    line-height: 1.8;
+}
+
+.cta-btn {
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 165, 116, 0.3);
+}
+
+.hero-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Why Choose Us */
+.why-choose-us {
+    padding: 5rem 2rem;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    margin-bottom: 3rem;
+    color: var(--primary-green);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-green);
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Menu Section */
+#menu {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#menu h2 {
+    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    margin-bottom: 2rem;
+    color: var(--primary-green);
+    text-align: center;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--light-gray);
+    border: 2px solid var(--border-light);
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border-color: var(--primary-green);
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-green);
+}
+
+.meals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.meal-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.meal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.meal-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.meal-content {
+    padding: 1.5rem;
+}
+
+.meal-name {
+    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+    color: var(--primary-green);
+}
+
+.meal-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.meal-macros {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.macro {
+    text-align: center;
+}
+
+.macro-value {
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+.macro-label {
+    color: #999;
+    font-size: 0.75rem;
+}
+
+.meal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meal-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.add-to-cart-btn {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #0f2d14;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: var(--white);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-header {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-items {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.cart-item {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+}
+
+.qty-btn {
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-light);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.qty-btn:hover {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border-color: var(--primary-green);
+}
+
+.qty-display {
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.cart-summary {
+    border-top: 2px solid var(--border-light);
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.summary-row.total {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    border-top: 1px solid var(--border-light);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background-color: var(--success);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease-out;
+    z-index: 2000;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 3rem 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .meals-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">FreshPrepCo</div>
+            <div class="nav-links">
+                <a href="#menu">Menu</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Reviews</a>
+            </div>
+            <button class="cart-btn" id="cartBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Gourmet Healthy Meals, Crafted by Hotel Chefs</h1>
+            <p>Premium nutrition with macro-tracking, locally sourced ingredients, and hotel-grade hygiene standards. Delivered fresh to your door.</p>
+            <button class="cta-btn" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">View Today's Menu</button>
+        </div>
+        <div class="hero-image">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Crect fill='%231E3F20' width='500' height='400'/%3E%3Ccircle cx='250' cy='200' r='120' fill='%23D4A574' opacity='0.2'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%23F4A460' opacity='0.15'/%3E%3Ctext x='250' y='210' font-size='24' fill='%23ffffff' text-anchor='middle' font-family='Arial'%3E🥗 Fresh Meals%3C/text%3E%3C/svg%3E" alt="Fresh healthy meals">
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <h2>Why Choose FreshPrepCo</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🍳</div>
+                <h3>Chef-Crafted</h3>
+                <p>Each meal designed by professional hotel chefs with 15+ years experience</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Macro-Balanced</h3>
+                <p>Complete nutritional breakdown for every meal. Track your macros effortlessly</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>Locally Sourced</h3>
+                <p>Farm-to-table ingredients from certified local organic suppliers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <h3>Hygiene Certified</h3>
+                <p>5-star food safety certification with monthly compliance audits</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Today's Menu</h2>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Meals</button>
+            <button class="filter-btn" data-filter="high-protein">High Protein</button>
+            <button class="filter-btn" data-filter="low-carb">Low Carb</button>
+            <button class="filter-btn" data-filter="vegan">Vegan</button>
+            <button class="filter-btn" data-filter="keto">Keto</button>
+        </div>
+
+        <div class="meals-grid" id="mealsGrid">
+            <!-- Meals will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be inserted here -->
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span id="subtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery:</span>
+                <span id="deliveryFee">₹50</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span id="total">₹50</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+// Meal Database
+const meals = [
+    {
+        id: 1,
+        name: "Grilled Salmon with Quinoa",
+        description: "Pan-seared salmon with herb-roasted quinoa and seasonal vegetables",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23FF6B6B' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%23FFD93D' opacity='0.6'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🐟%3C/text%3E%3C/svg%3E",
+        price: 450,
+        category: "high-protein",
+        calories: 550,
+        protein: 42,
+        carbs: 45,
+        fats: 18
+    },
+    {
+        id: 2,
+        name: "Buddha Bowl - Vegan",
+        description: "Chickpea falafel, roasted veggies, tahini dressing, and fresh greens",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%2352B788' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%23FECB0F' opacity='0.5'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🥗%3C/text%3E%3C/svg%3E",
+        price: 380,
+        category: "vegan",
+        calories: 480,
+        protein: 18,
+        carbs: 65,
+        fats: 12
+    },
+    {
+        id: 3,
+        name: "Keto Steak & Broccoli",
+        description: "Grass-fed ribeye with charred broccoli and hollandaise sauce",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%238B4513' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%2336A64F' opacity='0.6'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🥩%3C/text%3E%3C/svg%3E",
+        price: 520,
+        category: "keto",
+        calories: 620,
+        protein: 55,
+        carbs: 8,
+        fats: 42
+    },
+    {
+        id: 4,
+        name: "Turkey & Brown Rice",
+        description: "Lean ground turkey with mushroom ragout and organic brown rice",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23CD853F' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%23F5DEB3' opacity='0.5'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🍗%3C/text%3E%3C/svg%3E",
+        price: 390,
+        category: "high-protein",
+        calories: 510,
+        protein: 46,
+        carbs: 52,
+        fats: 10
+    },
+    {
+        id: 5,
+        name: "Tofu Stir-fry Bowl",
+        description: "Crispy tofu with colorful veggies in sesame-ginger sauce, low-carb style",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23FF8C00' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%234169E1' opacity='0.4'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🥢%3C/text%3E%3C/svg%3E",
+        price: 350,
+        category: "vegan",
+        calories: 420,
+        protein: 22,
+        carbs: 28,
+        fats: 15
+    },
+    {
+        id: 6,
+        name: "Egg White Omelette",
+        description: "Fluffy 8-egg white omelette with spinach, feta, and herbs",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23FFFACD' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%23FFA500' opacity='0.5'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🍳%3C/text%3E%3C/svg%3E",
+        price: 320,
+        category: "high-protein",
+        calories: 280,
+        protein: 48,
+        carbs: 5,
+        fats: 8
+    },
+    {
+        id: 7,
+        name: "Vegan Pizza Bowl",
+        description: "Plant-based protein, tomato base, cashew cheese, fresh basil",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23DC143C' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%23FFD700' opacity='0.5'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🍕%3C/text%3E%3C/svg%3E",
+        price: 410,
+        category: "vegan",
+        calories: 520,
+        protein: 24,
+        carbs: 68,
+        fats: 14
+    },
+    {
+        id: 8,
+        name: "Grilled Chicken Wrap",
+        description: "Herb-marinated chicken, low-carb tortilla, avocado, Greek yogurt",
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23D2691E' width='300' height='300'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%2390EE90' opacity='0.5'/%3E%3Ctext x='150' y='160' font-size='40' fill='%23ffffff' text-anchor='middle'%3E🌯%3C/text%3E%3C/svg%3E",
+        price: 360,
+        category: "low-carb",
+        calories: 420,
+        protein: 38,
+        carbs: 22,
+        fats: 16
+    }
+];
+
+let cart = [];
+let currentFilter = 'all';
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    renderMeals();
+    setupEventListeners();
+});
+
+function setupEventListeners() {
+    document.getElementById('cartBtn').addEventListener('click', () => {
+        document.getElementById('cartSidebar').classList.add('open');
+    });
+
+    document.getElementById('closeCart').addEventListener('click', () => {
+        document.getElementById('cartSidebar').classList.remove('open');
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.dataset.filter;
+            renderMeals();
+        });
+    });
+}
+
+function renderMeals() {
+    const filtered = currentFilter === 'all' 
+        ? meals 
+        : meals.filter(meal => meal.category === currentFilter);
+
+    const html = filtered.map(meal => `
+        <div class="meal-card">
+            <img src="${meal.image}" alt="${meal.name}" class="meal-image">
+            <div class="meal-content">
+                <div class="meal-name">${meal.name}</div>
+                <div class="meal-description">${meal.description}</div>
+                <div class="meal-macros">
+                    <div class="macro">
+                        <div class="macro-value">${meal.calories}</div>
+                        <div class="macro-label">Cal</div>
+                    </div>
+                    <div class="macro">
+                        <div class="macro-value">${meal.protein}g</div>
+                        <div class="macro-label">Protein</div>
+                    </div>
+                    <div class="macro">
+                        <div class="macro-value">${meal.carbs}g</div>
+                        <div class="macro-label">Carbs</div>
+                    </div>
+                    <div class="macro">
+                        <div class="macro-value">${meal.fats}g</div>
+                        <div class="macro-label">Fat</div>
+                    </div>
+                </div>
+                <div class="meal-footer">
+                    <div class="meal-price">₹${meal.price}</div>
+                    <button class="add-to-cart-btn" onclick="addToCart(${meal.id})">Add</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    document.getElementById('mealsGrid').innerHTML = html;
+}
+
+function addToCart(mealId) {
+    const meal = meals.find(m => m.id === mealId);
+    const existingItem = cart.find(item => item.id === mealId);
+
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ ...meal, quantity: 1 });
+    }
+
+    updateCart();
+    showNotification(`Added to cart: ${meal.name}`);
+}
+
+function updateCart() {
+    document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    renderCartItems();
+    updateCartTotals();
+}
+
+function renderCartItems() {
+    const html = cart.map(item => `
+        <div class="cart-item">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">₹${item.price}</div>
+            <div class="quantity-control">
+                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                <div class="qty-display">${item.quantity}</div>
+                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+            </div>
+        </div>
+    `).join('');
+
+    document.getElementById('cartItems').innerHTML = html || '<p style="color: #999; text-align: center; padding: 2rem;">Your cart is empty</p>';
+}
+
+function updateQuantity(mealId, change) {
+    const item = cart.find(m => m.id === mealId);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            cart = cart.filter(m => m.id !== mealId);
+        }
+        updateCart();
+    }
+}
+
+function updateCartTotals() {
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const delivery = cart.length > 0 ? 50 : 0;
+    const total = subtotal + delivery;
+
+    document.getElementById('subtotal').textContent = `₹${subtotal}`;
+    document.getElementById('deliveryFee').textContent = `₹${delivery}`;
+    document.getElementById('total').textContent = `₹${total}`;
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const delivery = 50;
+    const total = subtotal + delivery;
+
+    const orderDetails = cart.map(item => `${item.name} x${item.quantity} - ₹${item.price * item.quantity}`).join('\n');
+    
+    const message = `Hi! I would like to order from FreshPrepCo:\n\n${orderDetails}\n\nSubtotal: ₹${subtotal}\nDelivery: ₹${delivery}\nTotal: ₹${total}\n\nPlease confirm my order.`;
+    
+    const whatsappUrl = `https://wa.me/919999999999?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+function showNotification(message) {
+    const notif = document.createElement('div');
+    notif.className = 'notification';
+    notif.textContent = message;
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 3000);
+}
+    </script>
+</body>
+</html>
