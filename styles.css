@@ -560,6 +560,27 @@ a {
     flex-shrink: 0;
 }
 
+.meal-nutrition-wrap {
+    margin-top: 0.45rem;
+}
+
+.meal-nutrition {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.4rem;
+}
+
+.nutrition-item {
+    font-size: 0.67rem;
+    font-weight: 600;
+    color: var(--dark);
+    background: #f4f4f5;
+    padding: 0.18rem 0.45rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    line-height: 1.35;
+}
+
 .size-pills {
     display: flex;
     gap: 0.4rem;

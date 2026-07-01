@@ -14,8 +14,32 @@ const meals = [
         tag: 'High Protein',
         category: 'protein',
         variants: [
-            { size: '100g', label: 'Regular', price: 129 },
-            { size: '200g', label: 'Large', price: 179 },
+            {
+                size: '100g',
+                label: 'Regular',
+                price: 129,
+                nutrition: {
+                    calories: 535,
+                    protein: 41,
+                    carbs: 62,
+                    fiber: 9,
+                    fat: 8,
+                    fatLabel: 'fat',
+                },
+            },
+            {
+                size: '200g',
+                label: 'Large',
+                price: 179,
+                nutrition: {
+                    calories: 700,
+                    protein: 72,
+                    carbs: 62,
+                    fiber: 9,
+                    fat: 15,
+                    fatLabel: 'healthy fats',
+                },
+            },
         ],
     },
     {
@@ -26,8 +50,32 @@ const meals = [
         tag: 'Veg Protein',
         category: 'veg',
         variants: [
-            { size: '100g', label: 'Regular', price: 139 },
-            { size: '200g', label: 'Large', price: 189 },
+            {
+                size: '100g',
+                label: 'Regular',
+                price: 139,
+                nutrition: {
+                    calories: 575,
+                    protein: 31,
+                    carbs: 67,
+                    fiber: 9,
+                    fat: 21,
+                    fatLabel: 'fat',
+                },
+            },
+            {
+                size: '200g',
+                label: 'Large',
+                price: 189,
+                nutrition: {
+                    calories: 840,
+                    protein: 50,
+                    carbs: 67,
+                    fiber: 9,
+                    fat: 40,
+                    fatLabel: 'fat',
+                },
+            },
         ],
     },
     {
@@ -37,7 +85,21 @@ const meals = [
         image: 'images/egg-rice-bowl.jpg',
         tag: 'High Protein',
         category: 'protein',
-        variants: [{ size: '4 Egg (100g)', label: 'Standard', price: 129 }],
+        variants: [
+            {
+                size: '4 Egg (100g)',
+                label: 'Standard',
+                price: 129,
+                nutrition: {
+                    calories: 670,
+                    protein: 34,
+                    carbs: 67,
+                    fiber: 9,
+                    fat: 28,
+                    fatLabel: 'fat',
+                },
+            },
+        ],
     },
     {
         id: 4,
@@ -46,7 +108,21 @@ const meals = [
         image: 'images/soya-chunks-rice-bowl.jpg',
         tag: 'Veg Protein',
         category: 'veg',
-        variants: [{ size: '100g', label: 'Regular', price: 129 }],
+        variants: [
+            {
+                size: '100g',
+                label: 'Regular',
+                price: 129,
+                nutrition: {
+                    calories: 690,
+                    protein: 62,
+                    carbs: 93,
+                    fiber: 18,
+                    fat: 8,
+                    fatLabel: 'fat',
+                },
+            },
+        ],
     },
     {
         id: 5,
@@ -55,7 +131,21 @@ const meals = [
         image: 'images/sprouts-chaat-bowl.jpg',
         tag: 'Light & Fresh',
         category: 'light',
-        variants: [{ size: '100g', label: 'Regular', price: 59 }],
+        variants: [
+            {
+                size: '100g',
+                label: 'Regular',
+                price: 59,
+                nutrition: {
+                    calories: 220,
+                    protein: 13,
+                    carbs: 31,
+                    fiber: 9,
+                    fat: 4,
+                    fatLabel: 'fat',
+                },
+            },
+        ],
     },
 ];
 
@@ -64,10 +154,37 @@ let currentFilter = 'all';
 let liveLocation = null;
 let locationWatchId = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const today = new Date().toISOString().split('T')[0];
+function formatLocalDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function getDeliveryDateLimits() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const maxDate = new Date(today);
+    maxDate.setDate(maxDate.getDate() + 3);
+
+    return {
+        min: formatLocalDate(today),
+        max: formatLocalDate(maxDate),
+    };
+}
+
+function setupDeliveryDateInput() {
     const dateInput = document.getElementById('deliveryDate');
-    if (dateInput) dateInput.min = today;
+    if (!dateInput) return;
+
+    const { min, max } = getDeliveryDateLimits();
+    dateInput.min = min;
+    dateInput.max = max;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupDeliveryDateInput();
 
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -153,6 +270,36 @@ function getSelectedVariant(card) {
     };
 }
 
+function renderNutrition(nutrition) {
+    if (!nutrition) return '';
+
+    const fatLabel = nutrition.fatLabel || 'fat';
+
+    return `
+        <div class="meal-nutrition" aria-label="Nutrition per serving">
+            <span class="nutrition-item">🔥 ${nutrition.calories} kcal</span>
+            <span class="nutrition-item">💪 ${nutrition.protein} g protein</span>
+            <span class="nutrition-item">🍚 ${nutrition.carbs} g carbs</span>
+            <span class="nutrition-item">🌾 ${nutrition.fiber} g fiber</span>
+            <span class="nutrition-item">🥜 ${nutrition.fat} g ${fatLabel}</span>
+        </div>
+    `;
+}
+
+function updateMealNutrition(card, nutrition) {
+    const wrap = card.querySelector('.meal-nutrition-wrap');
+    if (!wrap) return;
+
+    if (!nutrition) {
+        wrap.hidden = true;
+        wrap.innerHTML = '';
+        return;
+    }
+
+    wrap.hidden = false;
+    wrap.innerHTML = renderNutrition(nutrition);
+}
+
 function renderMeals(filter) {
     const mealsGrid = document.getElementById('mealsGrid');
     mealsGrid.innerHTML = '';
@@ -174,6 +321,9 @@ function renderMeals(filter) {
                 </div>
                 <p class="meal-description">${meal.description}</p>
                 ${renderSizePicker(meal)}
+                <div class="meal-nutrition-wrap"${defaultVariant.nutrition ? '' : ' hidden'}>
+                    ${renderNutrition(defaultVariant.nutrition)}
+                </div>
             </div>
             <div class="meal-action">
                 <div class="meal-price" data-price-for="${meal.id}">₹${defaultVariant.price}</div>
@@ -187,6 +337,8 @@ function renderMeals(filter) {
                 card.querySelectorAll('.size-pill').forEach((b) => b.classList.remove('active'));
                 btn.classList.add('active');
                 priceEl.textContent = `₹${btn.dataset.price}`;
+                const variant = meal.variants.find((v) => v.size === btn.dataset.size);
+                updateMealNutrition(card, variant?.nutrition);
             });
         });
 
@@ -339,6 +491,12 @@ function handleCheckout(e) {
         return;
     }
 
+    const { min, max } = getDeliveryDateLimits();
+    if (deliveryDate < min || deliveryDate > max) {
+        alert('Please choose a delivery date within the next 3 days (today through 3 days ahead).');
+        return;
+    }
+
     if (!liveLocation && !addressManual) {
         alert('Please use "Get Exact Live Location" or enter your full delivery address manually.');
         return;
@@ -370,6 +528,8 @@ function resetOrderForm() {
 
     const form = document.getElementById('checkoutForm');
     if (form) form.reset();
+
+    setupDeliveryDateInput();
 
     liveLocation = null;
     stopLocationWatch();

@@ -560,6 +560,27 @@ a {
     flex-shrink: 0;
 }
 
+.meal-nutrition-wrap {
+    margin-top: 0.45rem;
+}
+
+.meal-nutrition {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.4rem;
+}
+
+.nutrition-item {
+    font-size: 0.67rem;
+    font-weight: 600;
+    color: var(--dark);
+    background: #f4f4f5;
+    padding: 0.18rem 0.45rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    line-height: 1.35;
+}
+
 .size-pills {
     display: flex;
     gap: 0.4rem;
@@ -863,6 +884,32 @@ a {
 
 .contact-links a:hover {
     color: var(--lime);
+}
+
+.visit-counter {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(163, 230, 53, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.visit-counter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+}
+
+.visit-counter-value {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--lime);
+    letter-spacing: 0.04em;
 }
 
 /* Footer */
