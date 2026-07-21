@@ -17,7 +17,7 @@ const meals = [
             {
                 size: '100g',
                 label: 'Regular',
-                price: 129,
+                price: 149,
                 nutrition: {
                     calories: 535,
                     protein: 41,
@@ -30,7 +30,7 @@ const meals = [
             {
                 size: '200g',
                 label: 'Large',
-                price: 179,
+                price: 210,
                 nutrition: {
                     calories: 700,
                     protein: 72,
@@ -53,7 +53,7 @@ const meals = [
             {
                 size: '100g',
                 label: 'Regular',
-                price: 139,
+                price: 160,
                 nutrition: {
                     calories: 575,
                     protein: 31,
@@ -66,7 +66,7 @@ const meals = [
             {
                 size: '200g',
                 label: 'Large',
-                price: 189,
+                price: 210,
                 nutrition: {
                     calories: 840,
                     protein: 50,
